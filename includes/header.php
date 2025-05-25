@@ -2,10 +2,11 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-$cartCount = 0;
-if (isset($_SESSION['cart'])) {
-    $cartCount = array_sum($_SESSION['cart']);
+// Generate CSRF token if not set
+if (!isset($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
 }
+$cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,26 +52,28 @@ if (isset($_SESSION['cart'])) {
     </nav>
 </header>
 
-<!-- Place this script near the end of the body or in footer -->
 <script>
-function addToCart(productId) {
+function addToCart(productId, action = 'add') {
+    const csrfToken = '<?php echo htmlspecialchars($_SESSION['csrf_token']); ?>';
     fetch('add_to_cart.php', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/x-www-form-urlencoded',
         },
-        body: 'id=' + encodeURIComponent(productId)
+        body: `id=${encodeURIComponent(productId)}&action=${encodeURIComponent(action)}&csrf_token=${encodeURIComponent(csrfToken)}`
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             document.getElementById('cart-count').textContent = data.cartCount;
+            alert(data.message); // Replace with better UI feedback if needed
         } else {
-            alert('Failed to add product to cart.');
+            alert('Error: ' + data.message);
         }
     })
     .catch(error => {
         console.error('Error:', error);
+        alert('Failed to update cart. Please try again.');
     });
 }
 </script>

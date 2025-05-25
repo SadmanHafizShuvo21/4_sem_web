@@ -21,6 +21,9 @@ try {
     $errors[] = "Failed to fetch products: " . htmlspecialchars($e->getMessage());
     $products = [];
 }
+
+// Define placeholder image path for JavaScript
+$placeholderImage = defined('PLACEHOLDER_IMAGE') ? PLACEHOLDER_IMAGE : 'assets/placeholder.jpg';
 ?>
 
 <main>
@@ -39,11 +42,13 @@ try {
             <div class="product-card">
                 <img src="assets/<?php echo htmlspecialchars($product['image']); ?>"
                      alt="<?php echo htmlspecialchars($product['name']); ?>"
-                     onerror="this.src='<?php echo defined('PLACEHOLDER_IMAGE') ? PLACEHOLDER_IMAGE : 'assets/placeholder.jpg'; ?>';">
+                     onerror="setPlaceholderImage(this)">
                 <h3><?php echo htmlspecialchars($product['name']); ?></h3>
                 <p>$<?php echo number_format($product['price'], 2); ?></p>
                 <a href="product.php?id=<?php echo $product['id']; ?>" class="btn-mix">View</a>
-                <button class="btn-mix" onclick="addToCart(<?php echo $product['id']; ?>, 'add')">Add to Cart</button>
+                <button class="btn-mix" onclick="addToCartWithFeedback(<?php echo $product['id']; ?>, this)" aria-label="Add <?php echo htmlspecialchars($product['name']); ?> to cart">
+                    Add to Cart
+                </button>
             </div>
         <?php endforeach; ?>
     </div>
@@ -54,5 +59,28 @@ try {
         </div>
     <?php endif; ?>
 </main>
+
+<script>
+// Define placeholder image path
+const placeholderImage = '<?php echo htmlspecialchars($placeholderImage); ?>';
+
+// Set placeholder image on error
+function setPlaceholderImage(img) {
+    img.src = placeholderImage;
+    img.onerror = null; // Prevent infinite loop
+}
+
+// Enhanced addToCart function with loading feedback
+function addToCartWithFeedback(productId, button) {
+    const originalText = button.textContent;
+    button.textContent = 'Adding...';
+    button.disabled = true;
+
+    addToCart(productId, 'add').finally(() => {
+        button.textContent = originalText;
+        button.disabled = false;
+    });
+}
+</script>
 
 <?php require_once 'includes/footer.php'; ?>

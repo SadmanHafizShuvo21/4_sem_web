@@ -1,217 +1,147 @@
-/* cart.css - Attractive & Modern Style */
+/* css/cart.css */
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f7f9fc;
+    color: #333;
+}
+
 main {
-  max-width: 900px;
-  margin: 50px auto;
-  padding: 0 20px 40px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: #222;
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 h1 {
-  text-align: center;
-  margin-bottom: 40px;
-  font-weight: 800;
-  font-size: 2.8rem;
-  color: #1e3a8a;
-  letter-spacing: 1.1px;
+    text-align: center;
+    margin-bottom: 30px;
+    color: #2c3e50;
 }
 
 .errors {
-  background-color: #ffe5e9;
-  color: #b42318;
-  border-left: 6px solid #f87171;
-  padding: 18px 25px;
-  margin-bottom: 30px;
-  border-radius: 8px;
-  font-weight: 600;
-  box-shadow: 0 2px 10px rgba(184, 28, 28, 0.15);
-}
-
-.empty-cart {
-  margin-top: 50px;
-  color: #555;
-  text-align: center;
-  font-size: 1.15rem;
-}
-
-.empty-cart img {
-  display: block;
-  margin: 0 auto 25px auto;
-  border-radius: 15px;
-  max-width: 320px;
-  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease;
-}
-
-.empty-cart img:hover {
-  transform: scale(1.05);
-}
-
-.empty-cart h2 {
-  font-size: 2.1rem;
-  margin-bottom: 10px;
-  color: #374151;
-}
-
-.empty-cart p {
-  margin-bottom: 25px;
-  color: #6b7280;
-}
-
-.empty-cart a {
-  background: linear-gradient(135deg, #3b82f6, #2563eb);
-  color: #fff;
-  padding: 14px 30px;
-  border-radius: 50px;
-  font-weight: 700;
-  text-decoration: none;
-  box-shadow: 0 6px 18px rgba(59, 130, 246, 0.5);
-  transition: all 0.3s ease;
-  display: inline-block;
-}
-
-.empty-cart a:hover {
-  background: linear-gradient(135deg, #2563eb, #1d4ed8);
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.6);
-  transform: translateY(-3px);
+    background-color: #ffe5e5;
+    color: #d9534f;
+    border: 1px solid #f5c6cb;
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
 }
 
 table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0 15px;
-  font-size: 1rem;
-  background: #f9fafb;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-thead tr {
-  background: linear-gradient(90deg, #3b82f6, #2563eb);
-  color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 10px rgba(37, 99, 235, 0.3);
+thead {
+    background-color: #f0f4f8;
 }
 
-thead th {
-  padding: 18px 20px;
-  font-weight: 700;
-  text-align: left;
-  letter-spacing: 0.04em;
+th, td {
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
 }
 
-tbody tr {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.3s ease;
+th {
+    font-weight: bold;
+    color: #555;
 }
 
 tbody tr:hover {
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.15);
+    background-color: #f9fcff;
 }
 
-tbody td {
-  padding: 16px 20px;
-  vertical-align: middle;
-  color: #374151;
-}
-
-tbody td img {
-  border-radius: 12px;
-  max-height: 60px;
-  object-fit: cover;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-tfoot tr {
-  background: #e0e7ff;
-  font-weight: 700;
-  font-size: 1.3rem;
-  color: #1e40af;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.3);
-}
-
-tfoot td {
-  padding: 18px 20px;
+img {
+    max-height: 60px;
+    border-radius: 6px;
 }
 
 button {
-  background: linear-gradient(135deg, #2563eb, #3b82f6);
-  border: none;
-  color: #fff;
-  padding: 8px 18px;
-  margin: 0 4px;
-  border-radius: 50px;
-  font-weight: 700;
-  font-size: 0.95rem;
-  cursor: pointer;
-  box-shadow: 0 6px 12px rgba(59, 130, 246, 0.4);
-  transition: all 0.3s ease;
-  user-select: none;
+    padding: 6px 12px;
+    margin: 0 3px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
 button:hover {
-  background: linear-gradient(135deg, #1d4ed8, #2563eb);
-  box-shadow: 0 8px 22px rgba(37, 99, 235, 0.7);
-  transform: translateY(-2px);
+    background-color: #2980b9;
 }
 
-button:active {
-  background: linear-gradient(135deg, #1e40af, #1d4ed8);
-  box-shadow: 0 5px 14px rgba(30, 64, 175, 0.9);
-  transform: translateY(1px);
+tfoot td {
+    font-size: 1.1em;
+    background-color: #f6f8fa;
+    font-weight: bold;
 }
 
-form {
-  display: inline;
+.empty-cart h2 {
+    margin-top: 20px;
+    color: #666;
 }
 
-@media (max-width: 600px) {
-  table, thead, tbody, th, td, tr {
-    display: block;
-  }
+.empty-cart p {
+    color: #777;
+    font-size: 1em;
+}
 
-  thead tr {
-    display: none;
-  }
+.empty-cart a {
+    margin-top: 15px;
+    display: inline-block;
+    background-color: #28a745;
+    color: #fff;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.2s ease;
+}
 
-  tbody tr {
-    margin-bottom: 20px;
-    background: #fff;
-    padding: 20px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(37, 99, 235, 0.1);
-  }
+.empty-cart a:hover {
+    background-color: #218838;
+}
 
-  tbody td {
-    padding-left: 50%;
-    position: relative;
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    font-size: 1rem;
-  }
+/* Responsive */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
 
-  tbody td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 20px;
-    top: 14px;
-    font-weight: 700;
-    color: #3b82f6;
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-  }
+    thead tr {
+        display: none;
+    }
 
-  tfoot td {
-    display: block;
-    text-align: right;
-    font-size: 1.15rem;
-  }
+    tbody tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 10px;
+    }
+
+    td {
+        text-align: right;
+        position: relative;
+        padding-left: 50%;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        top: 15px;
+        font-weight: bold;
+        color: #555;
+    }
+
+    img {
+        max-width: 100px;
+        margin: 0 auto;
+    }
 }
