@@ -1,0 +1,162 @@
+/* Header Styles */
+header {
+    background: color-mix(in srgb, var(--primary) 90%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--glass);
+}
+
+body {
+    background-image: url('../images/background.jpg');
+    
+}
+/* Register Page Styles */
+body.register-page {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+        url('../images/background.jpg') center/cover no-repeat fixed;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.register-container {
+    max-width: 600px;
+    width: 100%;
+    margin: 4rem auto;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    z-index: 1;
+}
+
+.register-container::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, var(--secondary), var(--primary), var(--accent));
+    z-index: -1;
+    border-radius: 18px;
+    background-size: 200% 200%;
+    animation: gradient-border 8s infinite;
+}
+
+@keyframes gradient-border {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.register-container h1 {
+    color: var(--primary);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.5rem;
+    position: relative;
+    padding-bottom: 1rem;
+    text-align: center;
+}
+
+.register-container h1::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: var(--secondary);
+    border-radius: 2px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid rgba(44, 62, 80, 0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.form-input:focus {
+    background: white;
+    border-color: var(--secondary);
+    box-shadow: 0 0 15px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+.errors {
+    background: rgba(231, 76, 60, 0.1);
+    border: 1px solid var(--accent);
+    padding: 1rem;
+    margin-bottom: 1rem;
+    color: var(--accent);
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.login-link {
+    color: var(--primary);
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.text-accent {
+    position: relative;
+    padding-bottom: 2px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.text-accent::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s ease;
+}
+
+.text-accent:hover::after {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    body.register-page {
+        background-attachment: scroll;
+        padding: 1rem;
+    }
+
+    .register-container {
+        margin: 2rem auto;
+        padding: 1.5rem;
+        backdrop-filter: blur(5px);
+    }
+
+    .form-input {
+        padding: 0.8rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .register-container {
+        margin: 6rem auto;
+    }
+}

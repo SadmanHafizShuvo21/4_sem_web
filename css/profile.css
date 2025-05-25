@@ -1,0 +1,151 @@
+/* Reset & base */
+html,body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f8fa;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('../images/background.jpg') center/cover fixed;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.profile-container {
+    max-width: 700px;
+    margin: 50px auto;
+    background: #fff;
+    padding: 40px 50px;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
+}
+
+.profile-container h2 {
+    margin-bottom: 30px;
+    font-weight: 700;
+    font-size: 2rem;
+    color: #222;
+}
+
+/* Form fields */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #444;
+    margin-top: 20px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 14px 18px;
+    font-size: 16px;
+    border: 1.8px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+    color: #222;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0,123,255,0.5);
+}
+
+form textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+/* Disabled inputs */
+form input[disabled],
+form textarea[disabled] {
+    background-color: #f0f0f0;
+    color: #666;
+    cursor: not-allowed;
+    border-color: #ddd;
+}
+
+/* Message box */
+.message {
+    background-color: #e6ffed;
+    border: 1.5px solid #8ed08e;
+    color: #2e662e;
+    padding: 15px 18px;
+    border-radius: 6px;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+/* Buttons container */
+form button,
+form a.btn-edit,
+form a.btn-cancel {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 28px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 6px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    user-select: none;
+}
+
+/* Save button */
+form button.btn-save {
+    background-color: #007bff;
+    border: none;
+    color: white;
+}
+
+form button.btn-save:hover {
+    background-color: #0056b3;
+}
+
+/* Edit button */
+form a.btn-edit {
+    background-color: #28a745;
+    color: white;
+    border: none;
+}
+
+form a.btn-edit:hover {
+    background-color: #1e7e34;
+}
+
+/* Cancel button */
+form a.btn-cancel {
+    background-color: #dc3545;
+    color: white;
+    margin-left: 15px;
+}
+
+form a.btn-cancel:hover {
+    background-color: #a71d2a;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .profile-container {
+        padding: 30px 20px;
+        margin: 20px;
+    }
+
+    form button,
+    form a.btn-edit,
+    form a.btn-cancel {
+        width: 100%;
+        margin: 15px 0 0 0;
+        text-align: center;
+    }
+
+    form a.btn-cancel {
+        margin-left: 0;
+    }
+}
