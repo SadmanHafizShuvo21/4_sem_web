@@ -21,14 +21,18 @@ $cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
     <nav>
         <div class="logo">E-Shop</div>
         <ul>
+            <!-- Always visible links for all users -->
             <li><a href="index.php" class="btn-mix"><span class="shine"></span><span class="particles"></span>Home</a></li>
             <li><a href="products.php" class="btn-mix"><span class="particles"></span>Products</a></li>
 
             <?php if (isset($_SESSION['user_id'])): ?>
+                <!-- Logged-in user menu -->
                 <?php if ($_SESSION['role'] === 'admin'): ?>
+                    <!-- Admin-specific links -->
                     <li><a href="admin_dashboard.php" class="btn-mix"><span class="particles"></span>Admin Dashboard</a></li>
                     <li><a href="logout.php" class="btn-mix"><span class="particles"></span>Logout</a></li>
                 <?php else: ?>
+                    <!-- Regular user links -->
                     <li>
                         <a href="cart.php" class="btn-mix">
                             <span class="particles"></span>
@@ -39,12 +43,7 @@ $cartCount = isset($_SESSION['cart']) ? array_sum($_SESSION['cart']) : 0;
                     <li><a href="logout.php" class="btn-mix"><span class="particles"></span>Logout</a></li>
                 <?php endif; ?>
             <?php else: ?>
-                <li>
-                    <a href="cart.php" class="btn-mix">
-                        <span class="particles"></span>
-                        Cart (<span id="cart-count"><?php echo $cartCount; ?></span>)
-                    </a>
-                </li>
+                <!-- Guest user links -->
                 <li><a href="login.php" class="btn-mix"><span class="particles"></span>Login</a></li>
                 <li><a href="register.php" class="btn-mix"><span class="particles"></span>Register</a></li>
             <?php endif; ?>
@@ -66,7 +65,7 @@ function addToCart(productId, action = 'add') {
     .then(data => {
         if (data.success) {
             document.getElementById('cart-count').textContent = data.cartCount;
-            alert(data.message); // Replace with better UI feedback if needed
+            alert(data.message); 
         } else {
             alert('Error: ' + data.message);
         }
