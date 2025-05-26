@@ -31,7 +31,9 @@ if (session_status() === PHP_SESSION_NONE) {
         <div class="footer-section">
             <h3>Follow Us</h3>
             <div class="social-links">
-                <a href="https://www.facebook.com/share/169Wz4uMBt/" class="social-link"><img src="assets/facebook-icon.jpg" alt="Facebook"></a>
+                <a href="https://www.facebook.com/share/169Wz4uMBt/" class="social-link" style="display: inline-block; width: 40px; height: 40px;">
+                    <img src="images/facebook-color.svg" alt="Facebook" style="object-fit: contain; width: 100%; height: 100%;">
+                </a>
                 <a href="#" class="social-link"><img src="assets/twitter-icon.png" alt="Twitter"></a>
                 <a href="#" class="social-link"><img src="assets/instagram-icon.png" alt="Instagram"></a>
             </div>
@@ -42,4 +44,5 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
 </footer>
 </body>
+
 </html>
