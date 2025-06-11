@@ -109,22 +109,11 @@ $placeholderImage = defined('PLACEHOLDER_IMAGE') ? PLACEHOLDER_IMAGE : 'assets/p
                         ?>
                     </div>
 
+                    <!-- View button -->
+                    <a href="product.php?id=<?php echo $product['id']; ?>" class="btn-mix">View</a>
+
                     <!-- User rating form -->
-                    <?php if (isset($_SESSION['user_id'])): ?>
-                        <form method="POST" action="rate_product.php" onchange="this.submit()" aria-label="Rate <?php echo htmlspecialchars($product['name']); ?>">
-                            <input type="hidden" name="product_id" value="<?php echo $product['id']; ?>">
-                            <input type="hidden" name="csrf_token" value="<?php echo $_SESSION['csrf_token']; ?>">
-                            <label for="rating-<?php echo $product['id']; ?>" class="visually-hidden">Your rating for <?php echo htmlspecialchars($product['name']); ?>:</label>
-                            <select name="rating" id="rating-<?php echo $product['id']; ?>" aria-describedby="rating-help-<?php echo $product['id']; ?>">
-                                <?php for ($i = 5; $i >= 1; $i--): ?>
-                                    <option value="<?php echo $i; ?>" <?php echo ($product['user_rating'] == $i) ? 'selected' : ''; ?>>
-                                        <?php echo str_repeat('★', $i); ?>
-                                    </option>
-                                <?php endfor; ?>
-                            </select>
-                            <span id="rating-help-<?php echo $product['id']; ?>" class="visually-hidden">Select a rating from 1 to 5 stars</span>
-                        </form>
-                    <?php endif; ?>
+                    
 
                     <!-- Add to cart button -->
                     <button class="btn-mix" onclick="addToCartWithFeedback(<?php echo $product['id']; ?>, this)" aria-label="Add <?php echo htmlspecialchars($product['name']); ?> to cart">

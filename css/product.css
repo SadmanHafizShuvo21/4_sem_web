@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap');
+
+:root {
+    --primary: #2c3e50;
+    --secondary: #3498db;
+    --accent: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --success: #2ecc71;
+    --warning: #f1c40f;
+    --gradient: linear-gradient(45deg, var(--secondary), var(--primary));
+    --glass: rgba(255, 255, 255, 0.1);
+    --shadow-lg: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+body {
+    background: #f8f9fa;
+    font-family: 'Poppins', sans-serif;
+}
+
+main {
+    max-width: 1000px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+}
+
+h1 {
+    text-align: center;
+    color: var(--primary);
+    margin-bottom: 2rem;
+}
+
+.product-detail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.product-detail img {
+    max-width: 300px;
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.product-detail h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--dark);
+}
+
+.product-detail p {
+    font-size: 1rem;
+    color: #555;
+    max-width: 600px;
+    line-height: 1.6;
+}
+
+.rating {
+    font-size: 1.2rem;
+    color: var(--warning);
+}
+
+select {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: 1px solid var(--secondary);
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+select:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px var(--accent);
+}
+
+/* Button group layout */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+/* Style both button and anchor elements */
+.button-group .btn-mix {
+    text-align: center;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 30px;
+    background: var(--gradient);
+    color: white;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    isolation: isolate;
+}
+
+.button-group .btn-mix:hover {
+    transform: translateY(-2px) scale(1.03);
+    box-shadow:
+        0 4px 20px rgba(231, 76, 60, 0.3),
+        0 0 15px rgba(46, 204, 113, 0.2);
+}
+
+.button-group .btn-mix:active {
+    transform: translateY(1px) scale(0.98);
+    filter: brightness(1.05);
+}
+
+.button-group .btn-mix::before,
+.button-group .btn-mix::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    mix-blend-mode: multiply;
+    opacity: 0;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #8e44ad, #2ecc71);
+}
+
+.button-group .btn-mix::after {
+    background: linear-gradient(45deg, #f1c40f, #e67e22);
+}
+
+.button-group .btn-mix:hover::before {
+    opacity: 0.6;
+    animation: color-wave 2s infinite linear;
+}
+
+.button-group .btn-mix:hover::after {
+    opacity: 0.4;
+    animation: color-wave 2.5s infinite linear reverse;
+}
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 1rem;
+    align-items: center;
+}
+
+.button-group .btn-mix {
+    width: 220px; /* Fixed width for visual consistency */
+    text-align: center;
+}
+
+
+@keyframes color-wave {
+    0% { background-position: 0% 50%; transform: scale(1); }
+    50% { background-position: 100% 50%; transform: scale(1.05); }
+    100% { background-position: 0% 50%; transform: scale(1); }
+}
+
+/* Accessibility label */
+.visually-hidden {
+    position: absolute;
+    left: -9999px;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .product-detail {
+        flex-direction: row;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .product-detail img {
+        margin-right: 2rem;
+    }
+
+    .product-detail > div {
+        flex: 1;
+    }
+}
+
+@media (max-width: 500px) {
+    .button-group .btn-mix {
+        flex: 1 1 100%;
+    }
+}

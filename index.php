@@ -17,6 +17,32 @@ try {
 try {
     $stmt = $pdo->query("SELECT * FROM products ORDER BY created_at DESC LIMIT 5");
     $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Fetch ratings for all products in one query
+    if (!empty($products)) {
+        $productIds = array_column($products, 'id');
+        $placeholders = implode(',', array_fill(0, count($productIds), '?'));
+        $ratingStmt = $pdo->prepare("
+            SELECT product_id, AVG(rating) as avg_rating
+            FROM product_ratings 
+            WHERE product_id IN ($placeholders)
+            GROUP BY product_id
+        ");
+        $ratingStmt->execute($productIds);
+        $ratings = $ratingStmt->fetchAll(PDO::FETCH_ASSOC);
+
+        // Map ratings to products
+        $ratingMap = [];
+        foreach ($ratings as $rating) {
+            $ratingMap[$rating['product_id']] = round($rating['avg_rating'], 1);
+        }
+
+        // Attach ratings to products
+        foreach ($products as &$product) {
+            $product['avg_rating'] = $ratingMap[$product['id']] ?? 0;
+        }
+        unset($product); // Unset reference
+    }
 } catch (PDOException $e) {
     $errors[] = "Failed to fetch products: " . htmlspecialchars($e->getMessage());
     $products = [];
@@ -45,6 +71,15 @@ $placeholderImage = defined('PLACEHOLDER_IMAGE') ? PLACEHOLDER_IMAGE : 'assets/p
                      onerror="setPlaceholderImage(this)">
                 <h3><?php echo htmlspecialchars($product['name']); ?></h3>
                 <p>$<?php echo number_format($product['price'], 2); ?></p>
+                <!-- Average rating -->
+                <div class="rating" aria-label="Average rating: <?php echo $product['avg_rating']; ?> out of 5">
+                    <?php
+                    for ($i = 1; $i <= 5; $i++) {
+                        echo $i <= round($product['avg_rating']) ? '★' : '☆';
+                    }
+                    echo " (" . $product['avg_rating'] . ")";
+                    ?>
+                </div>
                 <a href="product.php?id=<?php echo $product['id']; ?>" class="btn-mix">View</a>
                 <button class="btn-mix" onclick="addToCartWithFeedback(<?php echo $product['id']; ?>, this)" aria-label="Add <?php echo htmlspecialchars($product['name']); ?> to cart">
                     Add to Cart
